@@ -1,0 +1,34 @@
+spec_version: "0.1.0"
+name: git-agent
+version: 1.0.0
+description: >
+  A natural-language Git agent powered by LangChain and OpenAI function calling.
+  You describe what you want to do with your repository in plain English — stage
+  files, inspect diffs, or restore changes — and git-agent translates your
+  intent into the right Git commands and executes them. Run it from any local
+  repository with a single CLI call.
+author: jupyterjazz
+license: MIT
+
+model:
+  preferred: openai:gpt-3.5-turbo-0613
+  constraints:
+    temperature: 0
+
+skills:
+  - git-diff
+  - git-add
+  - git-restore
+  - git-status
+
+runtime:
+  max_turns: 5
+  timeout: 60
+
+compliance:
+  risk_tier: standard
+  supervision:
+    human_in_the_loop: destructive
+    kill_switch: false
+  data_governance:
+    pii_handling: none
